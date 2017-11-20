@@ -76,6 +76,8 @@ function excluirItem(id) {
 
 function hideDialog(id){
     document.getElementById(id).hide();
+    var lista = $("#lista");
+    lista.empty();
     fn.load('home.html');
 }
 
