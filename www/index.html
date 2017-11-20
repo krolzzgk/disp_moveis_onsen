@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item onclick="fn.load('home.html')" tappable>
+                        Lista de Tarefas
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('add.html')" tappable>
+                        Adicionar Tarefas
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+    </ons-splitter>
+
+    <template id="home.html">
+        <ons-page id="home">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Lista de Tarefas
+                </div>
+            </ons-toolbar>
+            <ons-list id="lista">
+                <ons-list-item>Item A</ons-list-item>
+                <ons-list-item>Item B <div class="right"><ons-button><ons-icon icon ="trash">
+                </ons-icons></ons-button></div> </ons-list-item>                
+            </ons-list>
+            <ons-fab position="bottom right" onclick="fn.load('add.html')">
+                <ons-icon icon="md-plus"></ons-icon>
+            </ons-fab>
+
+        </ons-page>
+    </template>
+
+    <template id="add.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Adicionar Novas Tarefas
+                </div>
+            </ons-toolbar>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <p>
+                    <ons-input class="text-input text-input--underbar" id="item" style="width:90%;"></ons-input>
+                </p>
+                <p style="margin-top: 30px;">
+                    <ons-button onclick="addItem()">Adicionar</ons-button>
+                </p>
+            </div>
+        </ons-page>
+    </template>
+    <ons-dialog id="adicionar-tarefa">
+        <div style="text-align: center; padding: 10px;">
+            <p>
+                Tarefa adicionada com sucesso.
+            </p>
+            <p>
+                <ons-button onclick="hideDialog('adicionar-tarefa')">Fechar</ons-button>
+            </p>
+        </div>
+    </ons-dialog>
+    <ons-dialog id="excluir-tarefa">
+        <div style="text-align: center; padding: 10px;">
+            <p>
+                Tarefa excluída com sucesso.
+            </p>
+            <p>
+                <ons-button onclick="hideDialog('excluir-tarefa')">Fechar</ons-button>
+            </p>
+        </div>
+    </ons-dialog>    
+    
+    <!-- Scripts -->
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <script src="lib/onsenui/js/jquery.js"></script>
+    <script src="lib/onsenui/js/app.js"></script>
+</body>
+
+</html>
